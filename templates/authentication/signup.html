@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-md-3">
+		<form name="formLogin">
+			<div class="form-group">
+				<label for="email">Nome</label>
+				<input type="text" name="nome" ng-model="cad.name" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="text" name="email" ng-model="cad.email" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" name="password" ng-model="cad.password" class="form-control" required>
+			</div>
+			<button class="btn btn-defaul" ng-click="vm.signup(cad)">Cadastrar</button>
+		</form>
+	</div>
+</div>

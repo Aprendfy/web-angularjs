@@ -1,0 +1,53 @@
+<button class="btn btn-success" ui-sref="dashboard">Dashboard</button>
+<br /><br /><br />
+<div class="row">
+  <div class="col-md-12">
+    <form class="form form-horizontal" name="form" novalidate>
+      <div class="form-group">
+        <label>Nome da Categoria</label><br/>
+        <input class="form-control" ng-model="vm.category.name"
+        type="text" name="nome" placeholder="Insira o Nome" required>
+      </div>
+
+      <!-- <div class="form-group">
+        <label>Descrição</label><br/>
+        <textarea class="form-control"
+        name="conteudo" rows="6"
+        ng-model="vm.novel.description"
+        placeholder="Insira a descrição da Novel" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Nome do Autor</label><br/>
+        <input class="form-control" ng-model="vm.novel.author"
+        type="text" name="nome" placeholder="Insira o Nome" required>
+      </div>
+
+      <div class="form-group">
+        <label>Scan Responsavel Pelo Projeto</label><br/>
+        <input class="form-control" ng-model="vm.novel.translation_team"
+        type="text" name="nome" placeholder="Insira o Nome" required>
+      </div>
+
+      <div class="form-group" ng-if="!vm.novo">
+        <label>Url Cover</label><br/>
+        <input class="form-control" ng-model="vm.novel.cover_url"
+        type="text" name="cover" placeholder="Url" required>
+      </div>
+
+      <div class="form-group">
+        <label>Imagem de Capa: Tamanho da imagem deve ser 600x200</label>
+        <button type="file" ngf-select
+        name="cover"
+        ngf-min-height="200" ngf-max-height="200" ngf-min-width="600" ngf-max-width="600"
+        ng-model="vm.novel.cover"
+        class="btn btn-success"
+        accept="image/*" ngf-max-size="1MB">
+        Escolher Arquivo</button>
+        <span ng-if="novel.cover">{{novel.conver.name}}</span>
+      </div> -->
+      <button ng-if="vm.novo" class="btn btn-primary" type="submit" ng-click="vm.cadastrar(vm.category)">Enviar</button><br />
+      <button ng-if="!vm.novo" class="btn btn-primary" type="submit" ng-click="vm.editNovel(vm.category)">Atualizar</button><br />
+    </form>
+  </div>
+</div>

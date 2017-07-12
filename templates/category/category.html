@@ -1,0 +1,22 @@
+<button class="btn btn-success" ui-sref="home">Home</button>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="category in vm.categorys track by $index">
+            <td>{{category.name}}</td>
+            <td>
+              <button ng-click="vm.gocategory(category)">Editar</button>
+              <button ng-click="vm.goChapters(category)">Capítulos</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-success" ui-sref="category-new"> Create Category</button>
