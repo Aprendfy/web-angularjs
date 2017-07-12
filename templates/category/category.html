@@ -9,11 +9,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="category in vm.categorys track by $index">
+        <tr ng-repeat="category in vm.categories track by $index">
             <td>{{category.name}}</td>
             <td>
-              <button ng-click="vm.gocategory(category)">Editar</button>
-              <button ng-click="vm.goChapters(category)">Capítulos</button>
+              <button ng-click="vm.goCategory(category)">Editar</button>
+              <button ng-click="vm.deleteCategory(category._id, $index)">Deletar</button>
             </td>
         </tr>
     </tbody>

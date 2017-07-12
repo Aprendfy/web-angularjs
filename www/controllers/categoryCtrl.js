@@ -15,6 +15,7 @@
         vm.category = {};
         vm.goCategory = goCategory;
         vm.novo = true;
+        vm.deleteCategory = deleteCategory;
 
 
         if ($state.current.name === 'category')
@@ -25,7 +26,6 @@
           var id = categoryService.get()._id;
           categoryAPIService.getCategory(id).then(function(result){
             vm.category = result;
-            console.log('result', result);
           });
         }
 
@@ -33,17 +33,24 @@
             categoryService.set(category);
             $state.go('category-edit');
         }
+        
+        function deleteCategory(id, index){
+          categoryAPIService.delete(id).then(function (result) {
+             vm.categories.splice(index, 1);
+          });
+        }
 
         function editCategory(category){
-          categoryAPIService.update(category).then(function (result) {
-            console.log('resultado de update category', result);
+          const body = {
+            name: vm.category.name
+          };
+          categoryAPIService.update(body, vm.category._id).then(function (result) {
              $state.go('category');
           });
         }
 
         function getCategories(){
           categoryAPIService.getCategories().then(function(result){
-            console.log('getcategories', result);
               vm.categories = result;
           });
         }
@@ -53,7 +60,6 @@
               name: category.name
             };
             categoryAPIService.add(body).then(function (result) {
-              console.log('result cadastro de categoria', result);
                 $state.go('category');
             });
             // var fd = new FormData();

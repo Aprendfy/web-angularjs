@@ -30,8 +30,8 @@
            });
       }
 
-			var _update = function (novel) {
-				return $http.put(config.baseUrl + 'novels/'+novel._id, novel)
+			var _update = function (category, id) {
+				return $http.put(config.baseUrl + 'app/categories/'+ id, category)
 					 .then(function (result) {
 						 return result.data.payload;
 					 });
@@ -45,14 +45,22 @@
        .then(function (result) {
          return result.data.payload;
          });
-			}
+      }
+        
+      var _delete = function(id) {
+        return $http.delete(config.baseUrl + 'app/categories/'+ id)
+					 .then(function (result) {
+						 return result.data.payload;
+					 });  
+      }
 
 			return {
 				getCategories: _getCategories,
         add : _add,
 				upload: _upload,
 				getCategory: _getCategory,
-				update: _update
+        update: _update,
+        delete: _delete
 			}
 		}
 })();
