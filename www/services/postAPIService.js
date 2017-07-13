@@ -8,10 +8,10 @@
 
       function postAPIService(config, $http){
 
-        var _getAll = function (objParam) {
-            return $http.post(config.baseUrl + 'posts/novelChapters', objParam)
+        var _getAll = function () {
+            return $http.get(config.baseUrl + 'app/posts/?category=')
             .then(function (result) {
-              return result.data;
+              return result.data.payload;
             });
         }
 

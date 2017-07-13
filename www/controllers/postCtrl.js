@@ -16,8 +16,8 @@
 					vm.novo = true;
 					vm.deletePost = deletePost;
 
-          var novel = novelService.get();
-					vm.novel = novel;
+          // var novel = novelService.get();
+					// vm.novel = novel;
 					
           if ($state.current.name === 'post')
               getPosts();
@@ -42,11 +42,9 @@
 					}
 
           function getPosts() {
-						var param = {};
-						param.novel_id = novelService.get()._id;
-            postAPIService.getAll(param)
+            postAPIService.getAll()
               .then(function(result){
-                  vm.posts = result.data;
+                  vm.posts = result;
               });
           }
 

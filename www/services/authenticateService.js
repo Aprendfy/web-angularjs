@@ -4,10 +4,10 @@
 		.module('app_services')
 		.factory('authenticateService', authenticateService);
 
-		authenticateService.$inject = ['$state', 'tokenControlService', '$auth'];
+		authenticateService.$inject = ['$q', '$state', 'tokenControlService', '$auth'];
 
-		function authenticateService ($state, tokenControlService, $auth) {
-
+		function authenticateService ($q, $state, tokenControlService, $auth) {
+			var deferred = $q.defer();
 			var _getAuthenticate = function () {
 				var token = tokenControlService.getItem('token');
 				if (token) return true;
@@ -24,6 +24,7 @@
 					})
 					.catch(function (err){
 						console.log("error", err);
+						return deferred.promise
 					});
 			}
 

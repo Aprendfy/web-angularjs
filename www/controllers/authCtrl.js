@@ -18,11 +18,11 @@
 						email: objForm.email,
 						password: objForm.password
 					}
-			  	authenticateService.login(body).then(function(result){
+					authenticateService.login(body)
+						.then(function(result){
 							$state.go('dashboard');
 			  		})
 			  		.catch(function(err){
-			  			console.log("error ao logar")
 			  		});
 		  	}
 
