@@ -5,12 +5,14 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Cor</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="category in vm.categories track by $index">
             <td>{{category.name}}</td>
+            <td>{{category.color}}</td>
             <td>
               <button ng-click="vm.goCategory(category)">Editar</button>
               <button ng-click="vm.deleteCategory(category._id, $index)">Deletar</button>

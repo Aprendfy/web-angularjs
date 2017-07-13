@@ -18,7 +18,6 @@
 			var _login = function (objForm){
 				return $auth.login(objForm)
 					.then(function (result){
-						console.log('login', result);
 						tokenControlService.setItem('token', result.data.payload.authorization);
 						tokenControlService.setItem('id', result.data.payload._id);
 						return result.status;
@@ -34,3 +33,4 @@
 			}
 		}
 })();
+	

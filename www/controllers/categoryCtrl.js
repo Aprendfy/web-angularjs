@@ -42,7 +42,8 @@
 
         function editCategory(category){
           const body = {
-            name: vm.category.name
+            name: category.name,
+            color: category.color            
           };
           categoryAPIService.update(body, vm.category._id).then(function (result) {
              $state.go('category');
@@ -57,7 +58,8 @@
 
         function cadastrar(category) {
             const body = {
-              name: category.name
+              name: category.name,
+              color: category.color
             };
             categoryAPIService.add(body).then(function (result) {
                 $state.go('category');

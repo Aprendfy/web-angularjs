@@ -46,22 +46,22 @@
                 controller: 'categoryCtrl',
 								controllerAs: 'vm'
 						})
-            .state('chapter', {
-                url: '/chapter',
-                templateUrl: 'templates/chapter/chapter.html',
-                controller: 'chapterCtrl',
+            .state('post', {
+                url: '/post',
+                templateUrl: 'templates/post/post.html',
+                controller: 'postCtrl',
 								controllerAs: 'vm'
 						})
-            .state('chapter-new', {
-                url: '/chapter-new',
-                templateUrl: 'templates/chapter/chapter-new.html',
-                controller: 'chapterCtrl',
+            .state('post-new', {
+                url: '/post-new',
+                templateUrl: 'templates/post/post-new.html',
+                controller: 'postCtrl',
 								controllerAs: 'vm'
 						})
-            .state('chapter-edit', {
-                url: '/chapter-edit',
-                templateUrl: 'templates/chapter/chapter-new.html',
-                controller: 'chapterCtrl',
+            .state('post-edit', {
+                url: '/post-edit',
+                templateUrl: 'templates/post/post-new.html',
+                controller: 'postCtrl',
 								controllerAs: 'vm'
 						})
             .state('dashboard', {
