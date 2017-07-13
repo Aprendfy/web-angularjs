@@ -3,9 +3,9 @@
 	angular.module('app_controllers')
 		   .controller('postCtrl', postCtrl);
 
-		   postCtrl.$inject = ['$state', 'categoryService', 'postAPIService', 'postService'];
+		   postCtrl.$inject = ['$state', 'categoryAPIService', 'postAPIService', 'postService'];
 
-		   function postCtrl($state, categoryService, postAPIService, postService){
+		   function postCtrl($state, categoryAPIService, postAPIService, postService){
 
 		   	  var vm = this;
           vm.posts = [];
@@ -15,12 +15,13 @@
 					vm.post = {};
 					vm.novo = true;
 					vm.deletePost = deletePost;
-
+					vm.categories = [];
+					
           // var novel = novelService.get();
 					// vm.novel = novel;
 					
           if ($state.current.name === 'post')
-              getPosts();
+								getCategories();
 
 					if($state.current.name === 'post-edit'){
 						vm.novo = false;
@@ -29,6 +30,13 @@
 							vm.post = result.data;
 						});
 					}
+
+					function getCategories(){
+						categoryAPIService.getCategories().then(function(result){
+								vm.categories = result;
+						});
+        	}
+
 					function deletePost(id){
 						postAPIService.deletar(id)
 							.then(function(result){

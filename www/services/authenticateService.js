@@ -23,7 +23,6 @@
 						return result.status;
 					})
 					.catch(function (err){
-						console.log("error", err);
 						return deferred.promise
 					});
 			}
