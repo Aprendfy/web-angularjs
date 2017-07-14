@@ -11,7 +11,6 @@
       var _getCategories = function (objParam) {
           return $http.get(config.baseUrl + 'app/categories/')
           .then(function (result) {
-            console.log('result categories', result);
             return result.data.payload;
           });
       }

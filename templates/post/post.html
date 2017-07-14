@@ -1,8 +1,22 @@
 <button class="btn btn-success" ui-sref="home">Home</button>
 <button class="btn btn-success" ui-sref="novel">Lista de Novels</button>
 
-<h3>Novel: {{vm.novel.name}}</h3>
 
+<h3 ng-if="!vm.category.name">Selecione uma categoria</h3>
+<form class="form form-horizontal" name="form" novalidate>
+      <div class="form-group">
+        <select
+            class="form-control"
+            ng-options="item.name as item.name for item in vm.categories"
+            name="categoria"
+            ng-model="vm.queryCategory"
+            required>
+            <option value="">Selecione um Tipo</option>
+        </select><br>
+      </div>
+      <button class="btn btn-primary" type="submit" ng-click="vm.getPosts(vm.queryCategory)">Enviar</button><br />
+</form>
+<h3 ng-if="vm.category.name">Posts da Categoria: {{vm.category.name}}</h3>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -23,4 +37,4 @@
     </tbody>
 </table>
 
-<button class="btn btn-success" ui-sref="chapter-new"> Create Capítulo</button>
+<button class="btn btn-success" ui-sref="post-new"> Cadastrar Post</button>

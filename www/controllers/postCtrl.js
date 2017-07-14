@@ -16,11 +16,12 @@
 					vm.novo = true;
 					vm.deletePost = deletePost;
 					vm.categories = [];
+					vm.queryCategory = '';
 					
           // var novel = novelService.get();
 					// vm.novel = novel;
 					
-          if ($state.current.name === 'post')
+          if($state.current.name === 'post')
 								getCategories();
 
 					if($state.current.name === 'post-edit'){
@@ -32,8 +33,10 @@
 					}
 
 					function getCategories(){
-						categoryAPIService.getCategories().then(function(result){
+						categoryAPIService.getCategories()
+							.then(function(result){
 								vm.categories = result;
+								console.log('categories in posts', vm.categories);
 						});
         	}
 
@@ -57,6 +60,9 @@
           }
 
           function createPost(post){
+						const body = {
+							ownerId: '' 
+						};
              var id = novelService.get()._id;
               post.novel = id;
 
