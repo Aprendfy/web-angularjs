@@ -9,16 +9,18 @@
       function postAPIService(config, $http){
 
         var _getAll = function () {
-            return $http.get(config.baseUrl + 'app/posts/?category=')
+            return $http.get(config.baseUrl + 'app/posts/?category=Facebook')
             .then(function (result) {
+              console.log('get facebook posts', result);
               return result.data.payload;
             });
         }
 
         var _add = function (objParam){
-          return $http.post(config.baseUrl + 'posts/', objParam)
+          return $http.post(config.baseUrl + 'app/posts/', objParam)
              .then(function (result) {
-               return result.data;
+               console.log('new post', result);
+               return result.data.payload;
              });
         }
 

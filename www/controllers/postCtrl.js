@@ -3,9 +3,9 @@
 	angular.module('app_controllers')
 		   .controller('postCtrl', postCtrl);
 
-		   postCtrl.$inject = ['$state', 'categoryAPIService', 'postAPIService', 'postService'];
+		   postCtrl.$inject = ['$state', 'categoryAPIService', 'postAPIService', 'postService','tokenControlService'];
 
-		   function postCtrl($state, categoryAPIService, postAPIService, postService){
+		   function postCtrl($state, categoryAPIService, postAPIService, postService, tokenControlService){
 
 		   	  var vm = this;
           vm.posts = [];
@@ -20,12 +20,13 @@
 					
           // var novel = novelService.get();
 					// vm.novel = novel;
-					
-          if($state.current.name === 'post')
+					getPosts();
+          if($state.current.name === 'post' || $state.current.name === 'post-new')
 								getCategories();
 
 					if($state.current.name === 'post-edit'){
 						vm.novo = false;
+						getCategories();						
 						var id = postService.get()._id;
 						postAPIService.getPost(id).then(function(result){
 							vm.post = result.data;
@@ -61,15 +62,17 @@
 
           function createPost(post){
 						const body = {
-							ownerId: '' 
+							title: post.title,
+							category: post.category,
+							readingTime: post.readingTime,
+							level: post.level,
+							body: post.body,
+							image: post.image,
 						};
-             var id = novelService.get()._id;
-              post.novel = id;
-
-              postAPIService.add(post)
-                .then(function(result){
-                    $state.go('post');
-                });
+						postAPIService.add(body)
+							.then(function(result){
+									$state.go('post');
+							});
           }
 
 					function editPost(post){
