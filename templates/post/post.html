@@ -9,29 +9,29 @@
             class="form-control"
             ng-options="item.name as item.name for item in vm.categories"
             name="categoria"
-            ng-model="vm.queryCategory"
+            ng-model="category"
             required>
             <option value="">Selecione um Tipo</option>
         </select><br>
       </div>
-      <button class="btn btn-primary" type="submit" ng-click="vm.getPosts(vm.queryCategory)">Enviar</button><br />
+      <button class="btn btn-primary" type="submit" ng-click="vm.getPostsFromCategory(category)">Consultar Posts</button><br />
 </form>
 <h3 ng-if="vm.category.name">Posts da Categoria: {{vm.category.name}}</h3>
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Capítulo</th>
             <th>Título</th>
             <th>Descrição</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="chapter in vm.chapters track by $index">
-            <td>{{chapter.number}}</td>
-            <td>{{chapter.title}}</td>
+        <tr ng-repeat="post in vm.posts track by $index">
+            <td>{{post.title}}</td>
+            <td>{{post.body}}</td>
             <td>
-              <button ng-click="vm.goChapter(chapter)">Editar</button>
-              <button ng-click="vm.deleteChapter(chapter._id)">Deletar</button>
+              <button ng-click="vm.goChapter(post)">Editar</button>
+              <button ng-click="vm.deleteChapter(post._id)">Deletar</button>
             </td>
         </tr>
     </tbody>

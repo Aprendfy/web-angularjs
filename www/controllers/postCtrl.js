@@ -12,15 +12,17 @@
           vm.createPost = createPost; 
 					vm.editPost = editPost;
 					vm.goPost = goPost;
+					vm.getPostsFromCategory = getPostsFromCategory;
 					vm.post = {};
 					vm.novo = true;
 					vm.deletePost = deletePost;
 					vm.categories = [];
 					vm.queryCategory = '';
+					vm.Posts = [];
 					
           // var novel = novelService.get();
 					// vm.novel = novel;
-					getPosts();
+				
           if($state.current.name === 'post' || $state.current.name === 'post-new')
 								getCategories();
 
@@ -30,6 +32,12 @@
 						var id = postService.get()._id;
 						postAPIService.getPost(id).then(function(result){
 							vm.post = result.data;
+						});
+					}
+
+					function getPostsFromCategory(category){
+						postAPIService.getAll(category).then(function(result){
+							vm.posts = result;
 						});
 					}
 

@@ -8,10 +8,10 @@
 
       function postAPIService(config, $http){
 
-        var _getAll = function () {
-            return $http.get(config.baseUrl + 'app/posts/?category=Facebook')
+        var _getAll = function (category) {
+            return $http.get(config.baseUrl + 'app/posts/?category='+category)
             .then(function (result) {
-              console.log('get facebook posts', result);
+              console.log('get facebook posts', result.data.payload);
               return result.data.payload;
             });
         }
