@@ -17,7 +17,10 @@
         }
 
         var _add = function (objParam){
-          return $http.post(config.baseUrl + 'app/posts/', objParam)
+          return $http.post(config.baseUrl + 'app/posts/', objParam,{
+                transformRequest:angular.identity,
+                headers:{'Content-type':undefined}
+             })
              .then(function (result) {
                console.log('new post', result);
                return result.data.payload;

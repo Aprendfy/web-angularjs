@@ -30,26 +30,31 @@
         <textarea class="form-control"
                   name="conteudo" rows="6"
                   ng-model="vm.post.body"
-                  placeholder="Insira o capítulo" required>
+                  placeholder="Conteúdo" required>
         </textarea>
       </div>
 
       <div class="form-group">
         <label>Reading Time</label><br/>
         <input class="form-control" ng-model="vm.post.readingTime"
-        type="text" name="readingTime" placeholder="Level" required>
+        type="text" name="readingTime" placeholder="Reading Time in Minutes" required>
       </div>
 
       <div class="form-group">
         <label>Level</label><br/>
         <input class="form-control" ng-model="vm.post.level"
-        type="text" name="level" placeholder="Level" required>
+        type="text" name="level" placeholder="Post's Level" required>
       </div>
 
       <div class="form-group">
-        <label>Imagem</label><br/>
-        <input class="form-control" ng-model="vm.post.image"
-        type="text" name="image" placeholder="Imagem" required>
+        <label>Imagem de Capa: 600x200</label>
+        <button type="file" ngf-select
+        name="image"
+        ngf-min-height="200" ngf-max-height="200" ngf-min-width="600" ngf-max-width="600"
+        ng-model="vm.post.image"
+        class="btn btn-success"
+        accept="image/*" ngf-max-size="1MB">Escolher Arquivo</button>
+        <span ng-if="vm.post.image">{{vm.post.image.name}}</span>
       </div>
 
 
