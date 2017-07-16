@@ -11,6 +11,8 @@
       var _register = function (objParam) {
          return $http.post(config.baseUrl + 'admin/auth/register/', objParam)
             .then(function (result) {
+							tokenControlService.setItem('token', result.data.payload.authorization);
+							tokenControlService.setItem('id', result.data.payload._id);
               return result.payload;
             });
       }
