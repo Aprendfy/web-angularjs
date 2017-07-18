@@ -41,10 +41,13 @@
              });
         }
 
-        var _update = function (objParam){
-          return $http.put(config.baseUrl + 'posts/'+objParam._id, objParam)
+        var _update = function (objParam, id){
+          return $http.put(config.baseUrl + 'app/posts/'+id, objParam, {
+                transformRequest:angular.identity,
+                headers:{'Content-type':undefined}
+             })
              .then(function (result) {
-               return result.data;
+               return result.data.payload;
              });
         }
 

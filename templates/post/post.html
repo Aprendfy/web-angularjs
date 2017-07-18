@@ -1,5 +1,4 @@
-<button class="btn btn-success" ui-sref="home">Home</button>
-<button class="btn btn-success" ui-sref="novel">Lista de Novels</button>
+<button class="btn btn-success" ui-sref="dashboard">Dashboard</button>
 
 
 <h3 ng-if="!vm.category.name">Selecione uma categoria</h3>
@@ -30,8 +29,8 @@
             <td>{{post.title}}</td>
             <td>{{post.body}}</td>
             <td>
-              <button ng-click="vm.goChapter(post)">Editar</button>
-              <button ng-click="vm.deleteChapter(post._id)">Deletar</button>
+              <button ng-click="vm.goPost(post)">Editar</button>
+              <button ng-click="vm.deletePost(post._id)">Deletar</button>
             </td>
         </tr>
     </tbody>

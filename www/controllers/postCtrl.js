@@ -29,10 +29,8 @@
 					if($state.current.name === 'post-edit'){
 						vm.novo = false;
 						getCategories();
-						var id = postService.get()._id;
-						postAPIService.getPost(id).then(function(result){
-							vm.post = result.data;
-						});
+						vm.post = postService.get();
+						console.log('vm post', vm.post);
 					}
 
 					function getPostsFromCategory(category){
@@ -67,44 +65,37 @@
               });
           }
 
-          function createPost(post){
-						// const body = {
-						// 	title: post.title,
-						// 	category: post.category,
-						// 	readingTime: post.readingTime,
-						// 	level: post.level,
-						// 	body: post.body,
-						// 	image: post.image
-						// };
-						
+          function createPost(post){			
 						var fd = new FormData();
-						fd.append('file', post.image);
-						console.log('image do form', post.image);
+						if(post.image){
+							fd.append('file', post.image);
+						}
 							
             fd.append('title', post.title);
             fd.append('category', post.category);
             fd.append('readingTime', post.readingTime);
             fd.append('level', post.level);
-            fd.append('body', post.body);
-				
+            fd.append('body', post.body);	
 
 						postAPIService.add(fd)
 							.then(function(result){
-									console.log('creat post', result);
 									$state.go('post');
 							});
-
-            // categoryAPIService.upload(fd).then(function (result) {
-            //       category.users = userService.getCurrentUser();
-            //       category.cover_url = result.img_url;
-            //     categoryAPIService.add(category).then(function (result) {
-            //        $state.go('category');
-            //     });
-						// });
           }
 
 					function editPost(post){
-						postAPIService.update(post)
+						var fd = new FormData();
+						if (post.image){
+							fd.append('file', post.image);
+						}
+							
+            fd.append('title', post.title);
+            fd.append('category', post.category);
+            fd.append('readingTime', post.readingTime);
+            fd.append('level', post.level);
+            fd.append('body', post.body);	
+
+						postAPIService.update(fd, post._id)
 							.then(function(result){
 									$state.go('post');
 							});
