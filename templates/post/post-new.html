@@ -50,15 +50,21 @@
 
       <div class="form-group">
         <label>Imagem de Capa: 600x200</label>
-        <button type="file" ngf-select
+        <button type="file" ngf-select data-ng-disabled="vm.post.image && !vm.novo"
         name="image"
         ngf-min-height="200" ngf-max-height="200" ngf-min-width="600" ngf-max-width="600"
         ng-model="vm.post.image"
         class="btn btn-success"
-        accept="image/*" ngf-max-size="1MB">Escolher Arquivo</button>
+        accept="image/*" ngf-max-size="1MB">Escolher Arquivo</button><br />
         <span ng-if="vm.post.image">{{vm.post.image.name}}</span>
       </div>
-
+      
+      <div ng-if="vm.post.image && !vm.novo">
+        <span ng-if="!vm.post.image.name">
+          Nome da Imagem:  {{vm.post.image}}
+        </span> 
+        <button class="btn btn-primary" ng-click="vm.removeImage()"> Remove Imagem atual </button>
+      </div>
 
       <button ng-if="vm.novo" class="btn btn-primary" type="submit" ng-click="vm.createPost(vm.post)">Enviar</button><br />
       <button ng-if="!vm.novo" class="btn btn-primary" type="submit" ng-click="vm.editPost(vm.post)">Atualizar</button><br />

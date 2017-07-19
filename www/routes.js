@@ -6,7 +6,7 @@
 		function  ($urlRouterProvider, $stateProvider, $authProvider, $locationProvider, $httpProvider) {
 
        $authProvider.loginUrl = "http://localhost:3000/v1/admin/auth/login";
-      //  $authProvider.loginUrl = "https://stark-beach-53351.herokuapp.com/users/authenticate";
+      //  $authProvider.loginUrl = "https://aprendfy.herokuapp.com/v1/admin/auth/login";
        $httpProvider.interceptors.push('AuthInterceptor');
        
 		   $stateProvider

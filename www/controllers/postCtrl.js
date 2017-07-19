@@ -19,6 +19,7 @@
 					vm.categories = [];
 					vm.queryCategory = '';
 					vm.Posts = [];
+					vm.removeImage = removeImage;
 					
           // var novel = novelService.get();
 					// vm.novel = novel;
@@ -64,6 +65,9 @@
                   vm.posts = result;
               });
           }
+					function removeImage(){
+						delete vm.post.image; 
+					}
 
           function createPost(post){			
 						var fd = new FormData();
@@ -84,6 +88,7 @@
           }
 
 					function editPost(post){
+
 						var fd = new FormData();
 						if (post.image){
 							fd.append('file', post.image);
