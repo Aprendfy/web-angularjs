@@ -47,6 +47,7 @@
                 headers:{'Content-type':undefined}
              })
              .then(function (result) {
+               console.log('update post', result.data.payload);
                return result.data.payload;
              });
         }
