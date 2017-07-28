@@ -22,7 +22,6 @@
                 headers:{'Content-type':undefined}
              })
              .then(function (result) {
-               console.log('new post', result);
                return result.data.payload;
              });
         }
@@ -35,7 +34,7 @@
         }
 
         var _deletar = function (id){
-          return $http.delete(config.baseUrl + 'posts/'+id)
+          return $http.delete(config.baseUrl + 'app/posts/'+id)
              .then(function (result) {
                return result.data;
              });
